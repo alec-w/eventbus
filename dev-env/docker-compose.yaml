@@ -1,0 +1,11 @@
+services:
+    dev:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        user: dev
+        stdin_open: true
+        tty: true
+        volumes:
+            - ..:/home/dev/working_dir
+        working_dir: /home/dev/working_dir

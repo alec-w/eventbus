@@ -1,0 +1,36 @@
+version: "2"
+linters:
+  default: all
+  disable:
+    - wsl # Deprecated in favour of wsl_v5
+    - wsl_v5 # Overly opinionated
+    - exhaustruct # Overly opinionated
+  settings:
+    depguard:
+      rules:
+        main:
+          files:
+            - $all
+            - "!$test"
+          allow:
+            - $gostd
+        test:
+          files:
+            - $test
+          allow:
+            - $gostd
+            - github.com/alec-w/eventbus
+            - github.com/stretchr/testify
+    nolintlint:
+      require-specific: true
+      require-explanation: true
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+    - swaggo
+run:
+  timeout: 1m
