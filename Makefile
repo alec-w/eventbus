@@ -16,6 +16,9 @@ fmt: ## Format Go code
 lint: ## Lint Go code
 	golangci-lint run
 
-test: ## Run unit tests
-	go test -coverprofile cover.out -count=1 ./...
+test/unit: ## Run unit tests with coverage
+	go test -coverprofile cover.out ./...
 	go tool cover -html=cover.out -o coverage.html
+
+test/race: ## Run unit tests with race detection
+	go test -race ./...

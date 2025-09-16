@@ -5,16 +5,22 @@ linters:
     - wsl # Deprecated in favour of wsl_v5
     - wsl_v5 # Overly opinionated
     - exhaustruct # Overly opinionated
+    - varnamelen # Overly opinionated
+    - noinlineerr # Inline errs is idiomatic
+    - nlreturn # Overly opinionated
+    - err113 # Noisy in test code
   settings:
     depguard:
       rules:
         main:
+          list-mode: strict
           files:
             - $all
             - "!$test"
           allow:
             - $gostd
         test:
+          list-mode: strict
           files:
             - $test
           allow:
@@ -24,6 +30,11 @@ linters:
     nolintlint:
       require-specific: true
       require-explanation: true
+    ireturn:
+      allow:
+        - error
+        - generic
+
 formatters:
   enable:
     - gci
