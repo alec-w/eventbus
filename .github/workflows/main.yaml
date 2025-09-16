@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6.0.0
         with:
           go-version: 1.25.0
-      - name: Test with Coverage
+      - name: Test
         run: go test -json -coverprofile cover.out ./... > TestResults.json
       - name: Structure Coverage
         run: go tool cover -html=cover.out -o coverage.html
@@ -48,10 +48,10 @@ jobs:
       - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6.0.0
         with:
           go-version: 1.25.0
-      - name: Test with Coverage
+      - name: Test
         run: go test -json -race ./... > TestResults.json
       - name: Upload Test Results
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: TestResults
+          name: TestResultsWithRaceDetection
           path: TestResults.json
