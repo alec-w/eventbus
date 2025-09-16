@@ -96,7 +96,8 @@ func (e *EventBus[T]) Subscribe(
 	subscription := &subscription[T]{
 		events: make(chan T),
 	}
-	e.subscriptions[subscription] = struct{}{}
+	e.subscriptions[subscription] = struct {
+	}{}
 	done := make(chan struct{})
 	filteredEvents := make(chan T)
 	go func() {
